@@ -19,6 +19,7 @@ normal and fault-like signals. Later milestones move data collection and
 inference onto real hardware.
 
 - [Project brief](projects/01-edge-vibration-monitor/README.md)
+- [Latest learning log](learning-log/2026-06-06-week-1.md)
 - Run the first demo: `make demo`
 - Run the tests: `make test`
 
@@ -57,4 +58,3 @@ Every finished project should include:
 
 The goal is not a wall of repositories. The goal is three finished projects that
 make engineering judgment visible.
-

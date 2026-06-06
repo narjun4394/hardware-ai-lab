@@ -20,8 +20,8 @@ the cloud.
 
 ```mermaid
 flowchart LR
-    A["Motor or fan"] --> B["ADXL345 accelerometer"]
-    B --> C["ESP32-S3 sampling"]
+    A["Guarded 5 V PWM fan"] --> B["SparkFun ADXL345 accelerometer"]
+    B --> C["ESP32-S3-DevKitC-1 sampling over SPI"]
     C --> D["Windowing and DSP features"]
     D --> E["Anomaly model"]
     E --> F["LED, serial output, or dashboard"]
@@ -30,17 +30,18 @@ flowchart LR
     H --> E
 ```
 
-## Starter Bill of Materials
+## Selected Hardware
 
-| Item | Purpose | Typical cost |
-| --- | --- | ---: |
-| ESP32-S3 development board | Sampling and edge inference | USD 10-20 |
-| ADXL345 accelerometer module | Three-axis vibration sensing | USD 5-12 |
-| Small low-voltage motor or USB fan | Test target | USD 8-20 |
-| Breadboard, wires, mounting material | Prototype setup | USD 10-20 |
+Milestone 1 selected a guarded 5 V fan rig that is easy to reproduce and safe to
+run on a desk.
 
-Use only a small, guarded, low-voltage test target. Stop the test if anything
-loosens, heats unexpectedly, or becomes mechanically unsafe.
+- [Exact bill of materials](hardware/BOM.md)
+- [Test stand, wiring, sampling, and safety plan](hardware/TEST-STAND.md)
+
+The starter sensor is intentionally affordable. Its bandwidth is sufficient to
+learn the full acquisition and edge-inference workflow, but it is not an
+industrial condition-monitoring instrument. The BOM records a higher-bandwidth
+upgrade path for later comparison.
 
 ## Measurements That Matter
 
@@ -55,7 +56,7 @@ loosens, heats unexpectedly, or becomes mechanically unsafe.
 ## Milestones
 
 - [x] Create a software baseline that extracts vibration features.
-- [ ] Select hardware and document the exact BOM.
+- [x] Select hardware and document the exact BOM.
 - [ ] Stream timestamped accelerometer samples to a laptop.
 - [ ] Capture at least 20 normal and 20 abnormal runs.
 - [ ] Publish an exploratory data analysis notebook or report.
@@ -76,4 +77,3 @@ make test
 
 The baseline intentionally starts with explainable signal features. An AI model
 must beat this baseline on measured data before it earns a place in the device.
-
